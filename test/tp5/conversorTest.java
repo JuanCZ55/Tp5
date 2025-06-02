@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 package tp5;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,9 +14,20 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author juancz55
  */
-public class CotizacionTest {
+public class conversorTest {
     
-    public CotizacionTest() {
+    static Conversor conversor = new Conversor(200); 
+    @Test 
+    public void Suma(){
+    conversor.aumentarSaldo(200);
+        assertEquals(400,conversor.getSaldo() , 0.001);
+    }
+   @Test 
+    public void Resta(){
+     conversor.retirarFisico(200);
+        assertEquals(200,conversor.getSaldo() , 0.001);
+    }         
+    public conversorTest() {
     }
     
     @BeforeAll
