@@ -17,9 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class conversorTest {
 
-    static Conversor conversor;
+    private static Conversor conversor;
 
-    public conversorTest() {
+    public conversorTest() { 
     }
     //Use las annotation @BeforeClass para inicializar (new) el calculador y mostrar mensaje de bienvenida. Utilice las annotations:
     //@Before antes de cada método, que muestre un mensaje de la operación que se testea
