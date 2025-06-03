@@ -8,9 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.params.ParameterizedTest;
 
 
-@RunWith(value=Parameterized.class)
 public class dolaritosTest {
     private static Conversor conversor;
     private static double exResult;
@@ -21,7 +21,7 @@ public class dolaritosTest {
     };
 
     // Datos para la prueba
-    @Parameters
+    @ParameterizedTest
     public static Iterable<Object[]> tomarDatos() {
         return Arrays.asList(new Object[][] {
             {180000, 120},
