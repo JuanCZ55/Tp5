@@ -1,55 +1,43 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
 package tp5;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-/**
- *
- * @author juancz55
- */
 public class conversorTest {
 
     private static Conversor conversor;
 
-    public conversorTest() { 
+    public conversorTest() {
     }
-    //Use las annotation @BeforeClass para inicializar (new) el calculador y mostrar mensaje de bienvenida. Utilice las annotations:
-    //@Before antes de cada método, que muestre un mensaje de la operación que se testea
-    //Use System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName() );
 
-    @BeforeAll
+    @BeforeClass
     public static void setUpClass() {
         conversor = new Conversor(200);
-        System.out.println("Bienvenido al BeforeAll");
+        System.out.println("Bienvenido al BeforeClass");
     }
 
-    @AfterAll
+    @AfterClass
     public static void tearDownClass() {
         System.out.println("Prueba finalizada, campos en 0");
     }
 
-    @BeforeEach
+    @Before
     public void setUp() {
         System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
-    @AfterEach
+    @After
     public void tearDown() {
         System.out.println("La Operacion ha finalizado");
     }
 
     @Test
     public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("El test es un prototipo. <<The test case is a prototype.>>");
     }
 
     @Test

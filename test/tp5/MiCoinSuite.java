@@ -1,10 +1,11 @@
 package tp5;
 
-import org.junit.platform.suite.api.SelectClasses;
-import org.junit.platform.suite.api.Suite;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
-@Suite
-@SelectClasses({
+
+@RunWith(Suite.class)
+@Suite.SuiteClasses({
     cotizacionTest.class,
     conversorTest.class,
     dolaritosTest.class
@@ -12,4 +13,3 @@ import org.junit.platform.suite.api.Suite;
 public class MiCoinSuite {
     // No requiere código adicional
 }
-

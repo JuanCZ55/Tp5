@@ -1,42 +1,42 @@
 package tp5;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
-
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class cotizacionTest {
+
     private static Conversor conversor;
+
     public cotizacionTest() {
     }
-    
-  @BeforeAll
+
+    @BeforeClass
     public static void setUpClass() {
         conversor = new Conversor(200);
-        System.out.println("Bienvenido al BeforeAll");
+        System.out.println("Bienvenido al BeforeClass");
     }
 
-    @AfterAll
+    @AfterClass
     public static void tearDownClass() {
         System.out.println("Prueba finalizada, campos en 0");
     }
 
-    @BeforeEach
+    @Before
     public void setUp() {
         System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
-    @AfterEach
+    @After
     public void tearDown() {
         System.out.println("La Operacion ha finalizado");
     }
-    @Test 
-    public Double testCotizarCero () {
-        return conversor.cotizar(500 ,  0);
-    }  
-    
+
+    @Test(expected = ArithmeticException.class)
+    public void testCotizarCero() {
+        conversor.cotizar(500, 0);
+    };
 }
