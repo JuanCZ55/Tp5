@@ -1,39 +1,14 @@
-
 package tp5;
-
-import java.util.Arrays;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
-
-
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.Arguments;
 public class dolaritosTest {
-    private static Conversor conversor;
-    private static double exResult;
-    
-    public dolaritosTest(int inicial, double exResult) {
-        conversor = new Conversor(inicial);
-        this.exResult = exResult;
-    };
-
-    // Datos para la prueba
-    @ParameterizedTest
-    public static Iterable<Object[]> tomarDatos() {
-        return Arrays.asList(new Object[][] {
-            {180000, 120},
-            {1500, 1},
-            {120, 0.08},
-            {120000, 80},
-            {0, 0},
-            {-900, -0.6},
-            {100000, 66.666},
-            {111, 0.074}
-        });
-    };
     @BeforeAll
     public static void setUpClass() {
         System.out.println("Bienvenido al BeforeAll");
@@ -41,7 +16,7 @@ public class dolaritosTest {
 
     @AfterAll
     public static void tearDownClass() {
-        System.out.println("Pruebas finalizada");
+        System.out.println("La operacion ha finalizado");
     }
 
     @BeforeEach
@@ -51,11 +26,26 @@ public class dolaritosTest {
 
     @AfterEach
     public void tearDown() {
-        System.out.println("La Operacion ha finalizado");
+        System.out.println("Prueba finalizada, campos en 0");
     }
-    
-    @Test
-    public void testCotizarCero () {
-         assertEquals(conversor.cotizar(1500, conversor.getSaldo()), exResult);
-    };
+
+    static Stream<Arguments> tomarDatos() {
+        return Stream.of(
+            Arguments.of(180000, 120.0),
+            Arguments.of(1500, 1.0),
+            Arguments.of(120, 0.08),
+            Arguments.of(120000, 80.0),
+            Arguments.of(0, 0.0),
+            Arguments.of(-900, -0.6),
+            Arguments.of(100000, 66.666),
+            Arguments.of(111, 0.074)
+        );
+    }
+    @ParameterizedTest
+    @MethodSource("tomarDatos")
+    public void testCotizarCero(int saldoInicial, double esperado) {
+        Conversor conversor = new Conversor(saldoInicial);
+        double resultado = conversor.cotizar(1500, conversor.getSaldo());
+        assertEquals(esperado, resultado, 0.01);
+    }
 }
